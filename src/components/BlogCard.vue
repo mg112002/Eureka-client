@@ -88,10 +88,34 @@ img{
     transition-duration: 1.7s;
 }
 .icons{
+    margin-right: 5%;
     width: 8%;
 }
 .icon{
     display: block;
     margin: 25% 0 20%;
+}
+@media only screen and (max-width: 710px) {
+    .blog-card{
+        flex-direction: column;
+        border-radius: 10px;
+    }
+    .icons{
+        display: flex;
+    }
+    .icon{
+        display: inline;
+        margin: auto 25%;
+    }
+    .blog-img{
+        width: 95%;
+        margin: auto;
+    }
+    .blog-info{
+        width: 100%;
+    }
+    .blog-img:hover {
+            transform: none;
+        }
 }
 </style>

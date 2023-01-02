@@ -30,16 +30,23 @@ export default {
 </script>
 
 <style scoped>
-html{
+html {
   scroll-behavior: smooth;
+}
+.container{
+  margin-bottom: 5%;
 }
 .content{
 margin: 5% 3% 1% 23%;
 }
-@media only screen and (max-width: 710px) {
+@media only screen and (max-width:1200px){
   .content{
-    margin: 30% 2% 1% 25% 
+    margin-top: 8%;
   }
 }
-
+@media only screen and (max-width: 710px) {
+  .content{
+    margin: 30% 2% 1% 20% 
+  }
+}
 </style>

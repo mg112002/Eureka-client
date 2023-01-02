@@ -44,7 +44,7 @@ const router = new Router({
                     name: 'blogs-tag',
                     path: ':tag',
                     props: true,
-                    // component: BlogsList
+                    component: BlogsList
                 }
             ]
         },
@@ -52,7 +52,7 @@ const router = new Router({
             name: 'blogs-category',
             path: '/categories/:category',
             props: true,
-            // component: BlogsList
+            component: BlogsList
         },
         {
             name: 'newsletter',

@@ -78,9 +78,19 @@ i{
 }
 @media only screen and (max-width: 710px) {
     .sidebar {
-        margin: 12.5% 0 0;
+        margin: 0;
         background-color: #8D9EFF;
             height: 100%;
     }
+}
+@media only screen and (max-width: 528px){
+    .sidebar{
+        margin-top: 12.3%;
+    }
+}
+@media only screen and (max-width: 450px) {
+    .sidebar {
+            margin-top: 15%;
+        }
 }
 </style>

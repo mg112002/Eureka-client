@@ -1,6 +1,6 @@
 <template>
 <div>
-<el-menu  :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect" :router=true
+<el-menu  :default-active="activeIndex" class="el-menu-demo" mode="horizontal" :router=true
     background-color="#8D9EFF" text-color="#001253" active-text-color="#0027b3" style="position:fixed;width:100%">
     <el-menu-item index="/"  style="border-bottom-color: transparent"><img src="../../public/logo.png"/></el-menu-item>
         <el-menu-item index="/blogs"  style="border-bottom-color: transparent;width:40%">

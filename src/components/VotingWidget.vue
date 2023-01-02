@@ -45,6 +45,11 @@ p{
     font-size: 1.5rem;
 }
 .icon:hover{
-    color:lightgreen
+    color:lightblue
+}
+@media only screen and (max-width: 710px) {
+    div{
+        margin: auto 0;
+    }
 }
 </style>

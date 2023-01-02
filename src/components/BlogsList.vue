@@ -1,7 +1,7 @@
 <template>
-    <div>
-  <BlogCard v-for="blog in blogs" :key="blog._id" :blog="blog" />
-</div>
+    <div class="blog-list">
+        <BlogCard v-for="blog in blogs" :key="blog._id" :blog="blog" />
+    </div>
 </template>
 
 <script>
@@ -33,6 +33,6 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
 </style>
