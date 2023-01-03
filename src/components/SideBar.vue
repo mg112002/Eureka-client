@@ -2,29 +2,36 @@
     <el-aside width="20%" class="sidebar">
         <el-row class="tac">
             <el-col>
-                <el-menu class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :router=true
-                    background-color="#8D9EFF" text-color="#001253" active-text-color="#0027b3" :collapse="isCollapse" style="border-right: none;">
+                <el-menu class="el-menu-vertical-demo" 
+                @open="handleOpen" 
+                @close="handleClose"
+                background-color="#8D9EFF" 
+                text-color="#001253" 
+                active-text-color="#0027b3" 
+                :collapse="isCollapse" 
+                style="border-right: none;">
                     <el-submenu index="1" style="color:#001253">
                         <template slot="title">
                             <i class="el-icon-s-unfold"></i>
                             <span>Categories</span>
                         </template>
-                            <el-menu-item index="/categories/C">C</el-menu-item>
-                            <el-menu-item index="/categories/C++">C++</el-menu-item>
+                            <router-link to="/categories/C" :key="$route.fullPath"><el-menu-item index="/categories/C">C</el-menu-item></router-link>
+                            <router-link to="/categories/C++" :key="$route.fullPath"><el-menu-item index="/categories/C++">C++</el-menu-item></router-link>
                             <el-menu-item index="/categories/Python">Python</el-menu-item>
                             <el-menu-item index="/categories/Java">Java</el-menu-item>
                             <el-menu-item index="/categories/JavaScript">JavaScript</el-menu-item>
                             <el-menu-item index="/categories/C#">C#</el-menu-item>
                             <el-menu-item index="/categories/Ruby">Ruby</el-menu-item>
                     </el-submenu>
-                    <el-menu-item index="/tags">
+                    <router-link to="/tags"><el-menu-item index="2" route>
                         <i class="el-icon-menu"></i>
                         <span>Tags</span>
                     </el-menu-item>
-                    <el-menu-item index="/newsletter">
+                    </router-link>
+                    <router-link to="/newsletter"><el-menu-item index="/newsletter">
                         <i class="el-icon-document"></i>
                         <span>NewsLetter</span>
-                    </el-menu-item>
+                    </el-menu-item></router-link>
                 </el-menu>
             </el-col>
         </el-row>
@@ -61,6 +68,9 @@ export default {
 </script>
 
 <style scoped>
+a{
+    text-decoration: none;
+}
 ::-webkit-scrollbar {
     width: 0px;
     background: transparent;
@@ -74,7 +84,7 @@ i{
     top: 3.8rem;
     left: 0;
     background-color: #8D9EFF;
-    height: 95%;
+    height: 97%;
 }
 @media only screen and (max-width: 710px) {
     .sidebar {

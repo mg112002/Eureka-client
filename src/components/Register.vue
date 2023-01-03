@@ -28,6 +28,10 @@ export default {
 </script>
 
 <style scoped>
+a{
+    text-decoration: none;
+    color: blue;
+}
 .box-card {
     width: 40%;
     height: 100%;

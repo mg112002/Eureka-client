@@ -3,6 +3,8 @@ import HomePage from '@/components/HomePage.vue'
 import LoginPage from '@/components/Login.vue'
 import RegisterPage from '@/components/Register.vue'
 import BlogsList from '@/components/BlogsList'
+import NewsLetter from '@/components/NewsLetter.vue'
+import TagsPage from '@/components/TagsPage.vue'
 import store from '@/store'
 
 const router = new Router({
@@ -21,7 +23,8 @@ const router = new Router({
         {
             name: 'blogs',
             path: '/blogs',
-            component: BlogsList
+            component: BlogsList,
+            props: true
         },
         {
             name: 'register',
@@ -38,15 +41,13 @@ const router = new Router({
             name: 'blogs-tags',
             path: '/tags',
             props: true,
-            // component: TagsPage
-            children: [
-                {
-                    name: 'blogs-tag',
-                    path: ':tag',
-                    props: true,
-                    component: BlogsList
-                }
-            ]
+            component: TagsPage
+        },
+        {
+            name: 'blogs-tag',
+            path: '/tags/:tag',
+            props: true,
+            component: BlogsList
         },
         {
             name: 'blogs-category',
@@ -57,7 +58,7 @@ const router = new Router({
         {
             name: 'newsletter',
             path: '/newsletter',
-            // component: Newsletter
+            component: NewsLetter
         },
         {
             name: 'add-blog',

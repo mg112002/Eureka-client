@@ -1,8 +1,8 @@
 <template>
   <div>
-    <button><i class="el-icon-caret-top icon"></i></button>
+    <button :disabled="isUpvoted"><i class="el-icon-caret-top up-icon" :style="isUpvoted?'color:green':''"></i></button>
     <p>{{ votes }}</p>
-    <button><i class="el-icon-caret-bottom icon"></i></button>
+    <button :disabled="isDownvoted"><i class="el-icon-caret-bottom down-icon" :style="isDownvoted?'color:red':''"></i></button>
 
   </div>
 </template>
@@ -13,7 +13,9 @@ export default {
     data() {
         return {
             votes: this.blog.upvotedBy.length - this.blog.downvotedBy.length,
-
+            isUpvoted: this.blog.upvotedBy.includes('a'),
+            // isDownvoted: this.blog.downvotedBy.includes(this.$store.state.email),
+            isDownvoted: this.blog.downvotedBy.includes('a'),
         }
     },
     props: {
@@ -44,9 +46,13 @@ p{
     margin: auto;
     font-size: 1.5rem;
 }
-.icon:hover{
-    color:lightblue
+.up-icon:hover{
+    color:green
 }
+.down-icon:hover{
+    color:red
+}
+
 @media only screen and (max-width: 710px) {
     div{
         margin: auto 0;

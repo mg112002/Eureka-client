@@ -10,7 +10,7 @@ const auth = {
         token: localStorage.getItem(KEY_TOKEN) || '',
         email: localStorage.getItem(KEY_EMAIL) || '',
         role: localStorage.getItem(KEY_ROLE) || '',
-        id: localStorage.getItem(KEY_ID) || '',
+        id: localStorage.getItem(KEY_ID) || ''
     },
     getters: {
         isAuthenticated(state) {
