@@ -19,7 +19,7 @@
         </el-menu-item>
         <el-menu-item index="/#about">AboutUs</el-menu-item>
         <div v-if="$store.getters.isAuthenticated" style="float:right">
-        <el-menu-item  index="5">Hello{{ $store.state.email }}</el-menu-item>
+        <el-menu-item  index="5">Hello{{ $store.state.auth.email }}</el-menu-item>
         <el-menu-item  index="/login">Logout</el-menu-item>
         </div>
     <el-menu-item v-else index="/login">Login</el-menu-item>
@@ -70,7 +70,7 @@ export default {
         setBlogs() {
             const blogs=this.blogs
             if (blogs) {
-                this.$store.state.blogs = blogs
+                this.$store.commit('updateBlogs',blogs)
                 this.$message({
                     type: 'success',
                     message: 'Match found',

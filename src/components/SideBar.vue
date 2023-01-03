@@ -2,36 +2,29 @@
     <el-aside width="20%" class="sidebar">
         <el-row class="tac">
             <el-col>
-                <el-menu class="el-menu-vertical-demo" 
-                @open="handleOpen" 
-                @close="handleClose"
-                background-color="#8D9EFF" 
-                text-color="#001253" 
-                active-text-color="#0027b3" 
-                :collapse="isCollapse" 
-                style="border-right: none;">
+                <el-menu class="el-menu-vertical-demo" :router=true
+                    background-color="#8D9EFF" text-color="#001253" active-text-color="#0027b3" :collapse="isCollapse" style="border-right: none;">
                     <el-submenu index="1" style="color:#001253">
                         <template slot="title">
                             <i class="el-icon-s-unfold"></i>
                             <span>Categories</span>
                         </template>
-                            <router-link to="/categories/C" :key="$route.fullPath"><el-menu-item index="/categories/C">C</el-menu-item></router-link>
-                            <router-link to="/categories/C++" :key="$route.fullPath"><el-menu-item index="/categories/C++">C++</el-menu-item></router-link>
-                            <el-menu-item index="/categories/Python">Python</el-menu-item>
-                            <el-menu-item index="/categories/Java">Java</el-menu-item>
-                            <el-menu-item index="/categories/JavaScript">JavaScript</el-menu-item>
-                            <el-menu-item index="/categories/C#">C#</el-menu-item>
-                            <el-menu-item index="/categories/Ruby">Ruby</el-menu-item>
+                            <el-menu-item index="/categories/C" @click="update">C</el-menu-item>
+                            <el-menu-item index="/categories/C++" @click="update">C++</el-menu-item>
+                            <el-menu-item index="/categories/Python" @click="update">Python</el-menu-item>
+                            <el-menu-item index="/categories/Java" @click="update">Java</el-menu-item>
+                            <el-menu-item index="/categories/JavaScript" @click="update">JavaScript</el-menu-item>
+                            <el-menu-item index="/categories/C#" @click="update">C#</el-menu-item>
+                            <el-menu-item index="/categories/Ruby" @click="update">Ruby</el-menu-item>
                     </el-submenu>
-                    <router-link to="/tags"><el-menu-item index="2" route>
+                    <el-menu-item index="/tags">
                         <i class="el-icon-menu"></i>
                         <span>Tags</span>
                     </el-menu-item>
-                    </router-link>
-                    <router-link to="/newsletter"><el-menu-item index="/newsletter">
+                    <el-menu-item index="/newsletter">
                         <i class="el-icon-document"></i>
                         <span>NewsLetter</span>
-                    </el-menu-item></router-link>
+                    </el-menu-item>
                 </el-menu>
             </el-col>
         </el-row>
@@ -53,24 +46,18 @@ export default {
             this.isCollapse = this.windowWidth < 710
         }
     },
-    methods: {
-        handleOpen(key, keyPath) {
-            console.log(key, keyPath);
-        },
-        handleClose(key, keyPath) {
-            console.log(key, keyPath);
-        }
-    },
     created() {
         this.isCollapse = window.innerWidth < 710
+    },
+    methods: {
+        update() {
+            this.$forceUpdate()
+        }
     }
 }
 </script>
 
 <style scoped>
-a{
-    text-decoration: none;
-}
 ::-webkit-scrollbar {
     width: 0px;
     background: transparent;

@@ -4,13 +4,15 @@ const KEY_TOKEN = 'token'
 const KEY_EMAIL = 'email'
 const KEY_ROLE = 'role'
 const KEY_ID = 'id'
+const BLOGS = 'blogs'
 
 const auth = {
     state: {
         token: localStorage.getItem(KEY_TOKEN) || '',
         email: localStorage.getItem(KEY_EMAIL) || '',
         role: localStorage.getItem(KEY_ROLE) || '',
-        id: localStorage.getItem(KEY_ID) || ''
+        id: localStorage.getItem(KEY_ID) || '',
+        blogs: localStorage.getItem(BLOGS) || ''
     },
     getters: {
         isAuthenticated(state) {
@@ -32,6 +34,10 @@ const auth = {
         },
         setId(state, id) {
             state.id = id
+        },
+        setBlogs(state, blogs) {
+            localStorage.setItem(BLOGS, blogs)
+            state.blogs = blogs
         }
     },
     actions: {
