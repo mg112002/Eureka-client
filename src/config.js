@@ -1,3 +1,5 @@
 export default {
-    apiBaseUrl: 'https://eureka-kotk.onrender.com/api'
+    // apiBaseUrl: '/api'
+    apiBaseUrl: 'http://localhost:3000/api'
+
 }

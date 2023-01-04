@@ -1,15 +1,15 @@
 <template>
-    <div class="container">
+    <div v-if="Object.keys(blog).length" class="container">
     <VotingWidget :blog="blog" />
     <div class="blog-card">
         <div class="icons">
-            <el-button :disabled="isAuthor" class="icon" type="primary" icon="el-icon-edit" circle></el-button>
+            <el-button :disabled="!isAuthor" class="icon" type="primary" icon="el-icon-edit" circle></el-button>
             <el-button class="icon" type="info" icon="el-icon-share" @click="open" circle></el-button>
-            <el-button :disabled="isAuthor" class="icon" type="danger" icon="el-icon-delete" circle></el-button>
+            <el-button :disabled="!isAuthor" class="icon" type="danger" icon="el-icon-delete" circle></el-button>
         </div>
         <div class="blog-info">
             <h1>{{ blog.title }}</h1>
-            <p>{{ blog.description.slice(0,310) }}
+            <p v-if="blog.description">{{ blog.description.slice(0,310) }}
         <router-link :to="{name:'blog-details',params:{id:blog._id}}">
                 ...Read more</router-link></p>
                 <el-button size="small" class="tags category" round>{{ blog.category }}</el-button>
@@ -37,13 +37,8 @@ export default {
     },
     props: {
         blog: {
-            type: Object,
             required:true
         },
-        // user: {
-        //     type: Object,
-        //     required:true
-        // }
     },
     components: {
         VotingWidget
@@ -52,12 +47,20 @@ export default {
         open() {
             this.$alert(`${config.apiBaseUrl} /blogs/${this.blog._id }`, 'Share', {
                 confirmButtonText: 'Copy',
-                callback: () => {
+                callback: action => {
                     navigator.clipboard.writeText(this.url)
-                    this.$message({
-                        type:'info',
-                        message: 'Copied to clipboard'
-                    });
+                    if (action === 'cancel') {
+                        this.$message({
+                            type: 'warning',
+                            message: `Cancelled`
+                        })
+                    } else {
+                        this.$message({
+                            type: 'success',
+                            message: `Copied to clipboard`
+                        })    
+                    }
+                    
                 }
             })
         }

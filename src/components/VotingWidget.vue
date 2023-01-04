@@ -1,9 +1,8 @@
 <template>
-  <div>
+  <div v-if="blog">
     <button :disabled="isUpvoted"><i class="el-icon-caret-top up-icon" :style="isUpvoted?'color:green':''"></i></button>
     <p>{{ votes }}</p>
     <button :disabled="isDownvoted"><i class="el-icon-caret-bottom down-icon" :style="isDownvoted?'color:red':''"></i></button>
-
   </div>
 </template>
 
@@ -13,14 +12,13 @@ export default {
     data() {
         return {
             votes: this.blog.upvotedBy.length - this.blog.downvotedBy.length,
-            isUpvoted: this.blog.upvotedBy.includes('a'),
+            isUpvoted: this.blog.upvotedBy.includes(this.$store.state.auth.id),
             // isDownvoted: this.blog.downvotedBy.includes(this.$store.state.email),
-            isDownvoted: this.blog.downvotedBy.includes('a'),
+            isDownvoted: this.blog.downvotedBy.includes(this.$store.state.auth.id)
         }
     },
     props: {
         blog: {
-            type: Object,
             required:true
     }
 }

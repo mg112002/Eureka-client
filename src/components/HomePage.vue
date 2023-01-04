@@ -40,12 +40,20 @@
   Excepturi nesciunt nemo optio? Fugit, ab eum voluptate tenetur eveniet sequi labore mollitia unde, quod doloribus asperiores corporis maxime voluptates nemo veritatis qui nostrum officiis, aspernatur perferendis facilis neque tempore.
   Quod sequi, officia expedita at possimus explicabo quam quae cum ipsam, error natus aliquid eligendi. Et esse reiciendis quia ad omnis minima iure hic. Culpa distinctio laboriosam alias a perferendis.
   Culpa rem error eos id, aliquid alias beatae aliquam maiores ullam vitae quia? Sunt quae, rem cum in magni veritatis nesciunt assumenda, unde dignissimos ratione a autem maxime minima animi.</p>
+  <!-- <el-input placeholder="Search by keyword or phrase" v-model.trim="search" style="width:92%" clearable /> -->
+  <!-- <el-input type="textarea" autosize placeholder="Please input" v-model.trim="search">
+  </el-input> -->
   </div>
 </template>
 
 <script>
 export default {
-  name: 'HomePage'
+  name: 'HomePage',
+  data() {
+    return {
+      search:''
+    }
+  }
 }
 </script>
 
