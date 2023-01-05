@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <!-- <div>
   <NavBar />
   <div class="container">
     <el-container>
@@ -10,13 +10,19 @@
     </el-container>
   </div>
   <AppFooter />
-  </div>
+  </div> -->
+  <el-container>
+    <el-header><NavBar/></el-header>
+    <el-container>
+      <SideBar />
+      <el-main><router-view /></el-main>
+    </el-container>
+  </el-container>
 </template>
 
 <script>
 
 import NavBar from './components/NavBar.vue'
-import AppFooter from './components/Footer.vue'
 import SideBar from './components/SideBar.vue';
 
 export default {
@@ -24,7 +30,6 @@ export default {
   components: {
     NavBar,
     SideBar,
-    AppFooter
   }
 }
 </script>
@@ -32,6 +37,9 @@ export default {
 <style scoped>
 html {
   scroll-behavior: smooth;
+}
+.el-header{
+  padding:0
 }
 .container{
   margin-bottom: 5%;

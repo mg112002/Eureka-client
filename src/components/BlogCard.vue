@@ -32,7 +32,7 @@ export default {
     data() {
         return {
             isAuthor: this.blog.postedBy === this.$store.state.email,
-            url: `${config.apiBaseUrl} /blogs/${this.blog._id }`
+            url: `${config.productionUrl}/blogs/${this.blog._id }`
         }  
     },
     props: {
@@ -45,7 +45,7 @@ export default {
     },
     methods: {
         open() {
-            this.$alert(`${config.apiBaseUrl} /blogs/${this.blog._id }`, 'Share', {
+            this.$alert(this.url, 'Share', {
                 confirmButtonText: 'Copy',
                 callback: action => {
                     navigator.clipboard.writeText(this.url)
@@ -130,6 +130,7 @@ img{
 .category{
     color:#8D9EFF ;
 }
+
 @media only screen and (max-width: 710px) {
     .blog-card{
         flex-direction: column;

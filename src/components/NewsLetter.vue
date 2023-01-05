@@ -1,9 +1,9 @@
 <template>
     <el-card class="box-card">
         <p class="label">Email</p>
-        <el-input placeholder=" Enter Email" v-model="email" clearable></el-input>
+        <el-input placeholder=" Enter Email" v-model.trim="email" clearable></el-input>
         <p class="label">Interest</p>
-        <el-select v-model="interests" multiple placeholder="Select tags">
+        <el-select v-model="interests" multiple placeholder="Select your interests">
             <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
             </el-option>
         </el-select>
@@ -79,7 +79,6 @@ a {
 
 .box-card {
     width: 40%;
-    height: 100%;
     margin: auto;
 }
 

@@ -14,12 +14,23 @@ export default {
 
 <style scoped>
 .footer{
-  width: 79.9%;
+  width: 82%;
   background-color: #8D9EFF;
-  position: fixed;
-  bottom:0;
-  margin-left: 20.1%;
+  position: relative;
+  bottom: 0;
+  margin-left: 19.3%;
   border-top: 2px solid white;
+  height: 200px;
+  /* clear: both;
+    position: relative;
+    height: 200px;
+    margin-top: -200px; */
   /* border-left: 1px solid white; */
 }
+/* footer {
+  clear: both;
+  position: relative;
+  height: 200px;
+  margin-top: -200px;
+} */
 </style>

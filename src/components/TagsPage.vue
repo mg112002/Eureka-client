@@ -36,9 +36,9 @@ export default {
 
 <style scoped>
 .row{
-    position: absolute;
     z-index: -1;
     padding-bottom: 2%;
+    padding-left: 5%;
 }
 .grid-content{
     height: 15rem;
@@ -50,6 +50,7 @@ export default {
     width: 100%;
     height: 100%;
     border-radius: 5px;
+    margin: auto;
     background-color: lightblue;
 }
 .column{

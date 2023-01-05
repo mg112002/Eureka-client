@@ -67,11 +67,7 @@ i{
     padding-left:1%
 }
 .sidebar{
-    position: fixed;
-    top: 3.8rem;
-    left: 0;
     background-color: #8D9EFF;
-    height: 97%;
 }
 @media only screen and (max-width: 710px) {
     .sidebar {

@@ -1,15 +1,11 @@
 <template>
 <el-card class="box-card">
     <p class="label">Title</p>
-    <el-input class="input" placeholder="Title" v-model.trim="name" clearable></el-input>
+    <el-input class="input" placeholder="Title" v-model="name" clearable></el-input>
     <p class="label">Description</p>
-    <!-- <b-input :state="null" placeholder="Describe the blog" v-model.trim="updatedDescription"></b-input> -->
-    <el-input class="input" type="textarea" :autosize="{ minRows: 20, maxRows: 25}" placeholder="Describe the blog" v-model.trim="description"></el-input>
-    <!-- <InputBox :placeholder="'Describe the blog'" :v-model="updatedDescription" :max="500" :min="300"/> -->
+    <el-input class="input" type="textarea" :autosize="{ minRows: 15, maxRows: 25}" placeholder="Describe the blog" v-model="description"></el-input>
     <p class="label">Category</p>
-    <div @keydown.space="addSpace">
-    <el-input class="input" placeholder="Category" v-model.trim="category"></el-input>
-    </div>
+    <el-input class="input" placeholder="Category" v-model.trim="category" clearable></el-input>
     <p class="label">Tags</p>
     <el-select class="input" v-model="tags" multiple placeholder="Tags">
         <el-option v-for="item in allTags" :key="item" :label="item" :value="item">
@@ -21,7 +17,6 @@
 
 <script>
 
-
 export default {
     name: 'EditBlog',
     props: {
@@ -29,6 +24,8 @@ export default {
             type: Object,
             required: true
         }
+    },
+    components: {
     },
     data() {
         return {
