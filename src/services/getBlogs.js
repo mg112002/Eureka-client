@@ -16,3 +16,8 @@ export const getBlogsBySearch = async (keyword) => {
     const res = await axios.get(`${config.apiBaseUrl}/blogs/search/all?keyWord=${keyword}`, headers)
     return res.data
 }
+
+export const getBlogById = async (id) => {
+    const res = await axios.get(`${config.apiBaseUrl}/blogs/${id}`, headers)
+    return res.data
+}

@@ -5,9 +5,12 @@ import RegisterPage from '@/components/Register.vue'
 import BlogsList from '@/components/BlogsList'
 import NewsLetter from '@/components/NewsLetter.vue'
 import TagsPage from '@/components/TagsPage.vue'
+import PageNotFound from '@/components/PageNotFound.vue'
+import BlogDetail from '@/components/BlogDetail.vue'
+import EditBlog from '@/components/EditBlog.vue'
 import store from '@/store'
 import { Message } from 'element-ui'
-import { getBlogsByCategory, getBlogsByTag, getBlogsBySearch } from '@/services/getBlogs'
+import { getBlogsByCategory, getBlogsByTag, getBlogsBySearch, getBlogById } from '@/services/getBlogs'
 
 const router = new Router({
     mode: 'history',
@@ -37,15 +40,13 @@ const router = new Router({
             name: 'blog-details',
             path: '/blogs/:id',
             props: true,
-            // component: BlogDetail,
-            children: [
-                {
-                    name: 'edit-blog',
-                    path: '/edit',
-                    props: true,
-                    // component: EditBlog
-                }
-            ]
+            component: BlogDetail,
+        },
+        {
+            name: 'edit-blog',
+            path: '/edit/:id',
+            props: true,
+            component: EditBlog
         },
         {
             name: 'blogs-tags',
@@ -78,7 +79,7 @@ const router = new Router({
         {
             name: 'not-found',
             path: '*',
-            // component: PageNotFound
+            component: PageNotFound
         },
     ]
 })
@@ -110,7 +111,6 @@ router.beforeEach((to, from, next) => {
     }
     if (to.name === 'blogs') {
         const keyWord = to.query.keyWord;
-        console.log(keyWord);
         (async function getBlogs() {
             const res = await getBlogsBySearch(keyWord)
             const blogs = res.data
@@ -128,6 +128,28 @@ router.beforeEach((to, from, next) => {
                     duration: 3000
                 })
             }
+        })()
+    }
+    if (to.name === 'edit-blog' && store.getters.isAuthenticated) {
+        const id = to.params.id;
+        (async function getBlog() {
+            const res = await getBlogById(id)
+            const blog = res.data
+            if (blog.postedBy === store.state.auth.email) {
+                store.commit('updateBlog', blog)
+            } else {
+                return next({
+                    name: 'login'
+                })
+            }
+        })()
+    }
+    if (to.name === 'blog-details') {
+        const id = to.params.id;
+        (async function getBlog() {
+            const res = await getBlogById(id)
+            const blog = res.data
+            store.commit('updateBlog', blog)
         })()
     }
     next()

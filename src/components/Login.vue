@@ -1,7 +1,7 @@
 <template>
 <el-card class="box-card">
     <p class="label">Username</p>
-    <el-input placeholder="Username" v-model="username" clearable></el-input>
+    <el-input placeholder="Username" v-model.trim="username" clearable></el-input>
     <p class="label">Password</p>
     <el-input placeholder="Please input password" v-model="password" show-password></el-input>
     <p>Don't have an account?<router-link to="/register"> Create New!</router-link></p>

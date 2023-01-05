@@ -35,20 +35,6 @@ export default {
 </script>
 
 <style scoped>
-/* .tags {
-    display: inline;
-    justify-content: space-between;
-}
-.tag-container{
-    display: flex;
-    flex-wrap: wrap;
-    background-color: lightgrey;
-    cursor: pointer;
-}
-.tag{
-    width: 4rem;
-    height: 4rem;
-} */
 .row{
     position: absolute;
     z-index: -1;

@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="nav">
 <el-menu  :default-active="activeIndex" class="el-menu-demo" mode="horizontal" :router=true
     background-color="#8D9EFF" text-color="#001253" active-text-color="#0027b3" style="position:fixed;width:100%">
     <el-menu-item index="/"  style="border-bottom-color: transparent"><img src="../../public/logo.png"/></el-menu-item>
@@ -59,6 +59,10 @@ export default {
 </script>
 
 <style scoped>
+.nav{
+    z-index: 1;
+    position: absolute;
+}
 el-menu{
     position: sticky;
     top: 0;
