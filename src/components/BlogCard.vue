@@ -40,6 +40,9 @@ export default {
         blog: {
             required:true
         },
+        idx: {
+            required:true
+        }
     },
     components: {
         VotingWidget
@@ -55,18 +58,13 @@ export default {
                 confirmButtonText: 'Copy',
                 callback: action => {
                     navigator.clipboard.writeText(this.url)
-                    if (action === 'cancel') {
-                        this.$message({
-                            type: 'warning',
-                            message: `Cancelled`
-                        })
-                    } else {
+                    if (action === 'confirm') {
                         this.$message({
                             type: 'success',
-                            message: `Copied to clipboard`
-                        })    
+                            message: `Copied to clipboard`,
+                            duration:2000
+                        })
                     }
-                    
                 }
             })
         },
@@ -76,7 +74,8 @@ export default {
             } else {
                 this.$message({
                     type: 'error',
-                    message:'Unauthorized access'
+                    message: 'Unauthorized access',
+                    duration:2000
                 })
             }
         },
@@ -89,14 +88,18 @@ export default {
                             try {
                                 this.$message({
                                     type: 'success',
-                                    message: 'Blog deleted successfully'
+                                    message: 'Blog deleted successfully',
+                                    duration:2000
                                 })
                                 await DeleteBlog(id)
-                                this.$router.go(0)                                
+                                let blogs = this.$store.getters.blogs
+                                blogs.splice(this.idx,1)
+                                this.$store.commit('updateBlogs',blogs)                             
                             } catch (err) {
                                 this.$message({
                                     type: 'error',
-                                    message: err.response.data.message
+                                    message: err.response.data.message,
+                                    duration:2000
                                 })
                             }
                         }

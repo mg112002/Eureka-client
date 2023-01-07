@@ -51,7 +51,8 @@ export default {
             if (this.email === '' || this.password === '') {
                 this.$message({
                     type: 'warning',
-                    message: 'Fields cannot be empty'
+                    message: 'Fields cannot be empty',
+                    duration: 2000
                 })
             } else if (this.emailValid && this.passValid) {
                 const credentials = {
@@ -63,7 +64,7 @@ export default {
                     this.$message({
                         type: 'success',
                         message: 'Logged in successfully',
-                        duration:4000
+                        duration:2000
                     })
                     this.$router.push({name:'home'})
                 } catch (err) {
@@ -71,8 +72,6 @@ export default {
                         type: 'error',
                         message: err.respone.data.message
                     })
-                } finally {
-                    this.$forceUpdate()
                 }
             }
         }

@@ -94,7 +94,7 @@ export default {
                 this.$message({
                     type: 'warning',
                     message: 'All fields are required',
-                    duration:3000
+                    duration:2000
                 })
             } else if (this.emailValid && this.iValid) {
                 const info = {
@@ -111,7 +111,7 @@ export default {
                         this.$message({
                             type: 'info',
                             message: `You will now receive emails of new blog on ${info.email}`,
-                            duration: 5000,
+                            duration: 3000,
                         })
                     }, 3000)
                     this.email = "",

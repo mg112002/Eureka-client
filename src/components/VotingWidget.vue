@@ -24,10 +24,19 @@ export default {
     },
     methods: {
         async vote(action) {
+            if (this.isAuthor) {
+                this.$message({
+                    type: 'info',
+                    message: 'You cannot vote your own blog :)',
+                    duration: 2000
+                })
+                return
+            }
             if (!this.isAuthenticated) {
                 this.$message({
                     type: 'info',
-                    message: 'Please login to vote a blog'
+                    message: 'Please login to vote a blog',
+                    duration: 2000
                 })
                 return
             }
@@ -36,7 +45,8 @@ export default {
                 this.updatedBlog = res.data
                 this.$message({
                     type: 'success',
-                    message: `${action}ed successfully`
+                    message: `${action}d successfully`,
+                    duration:2000
                 })
             } catch (err) {
                 this.$message({
@@ -89,6 +99,9 @@ export default {
         },
         isAuthenticated() {
             return this.$store.getters.isAuthenticated
+        },
+        isAuthor() {
+            return this.blog.postedBy===this.$store.state.auth.email
         }
     }
 }

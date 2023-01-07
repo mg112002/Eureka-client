@@ -33,7 +33,6 @@ export default {
     name:'NavBar',
     data() {
         return {
-            activeIndex: '1',
             search: '',
         };
     },
@@ -59,15 +58,16 @@ export default {
             try {
                 this.$message({
                     type: 'success',
-                    message: 'Logged out!'
+                    message: 'Logged out!',
+                    duration:2000
                 })
             } catch {
                 this.$message({
                     type: 'error',
-                    message: 'Something went wrong'
+                    message: 'Something went wrong',
+                    duration: 2000
+
                 })
-            } finally {
-                this.$forceUpdate()
             }
         }
     },
@@ -88,7 +88,6 @@ export default {
     position: absolute;
 }
 el-menu{
-    position: sticky;
     top: 0;
 }
 img{

@@ -24,7 +24,7 @@
         <p class="label">Image URL</p>
         <el-input class="input" placeholder="Enter Image URL" v-model.trim="imageUrl" clearable></el-input>
         <br><br>
-        <el-button type="primary" @click="postBlog" class="edit">Edit</el-button>
+        <el-button type="primary" @click="postBlog" class="edit">Post</el-button>
     </el-card>
 </template>
 

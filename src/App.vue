@@ -32,7 +32,8 @@ html {
   scroll-behavior: smooth;
 }
 .el-header{
-  padding:0
+  padding:0;
+  display: block;
 }
 .container{
   height: 100%;
@@ -50,6 +51,10 @@ html {
   }
   .container-auth{
     margin-top: 20%;
+  }
+}@media only screen and (max-width:480px) {
+  .container-auth {
+    margin-top: 26%;
   }
 }
 </style>

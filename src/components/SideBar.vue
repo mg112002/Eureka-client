@@ -9,13 +9,13 @@
                             <i class="el-icon-s-unfold"></i>
                             <span>Categories</span>
                         </template>
-                            <el-menu-item index="/categories/C" @click="update">C</el-menu-item>
-                            <el-menu-item index="/categories/C++" @click="update">C++</el-menu-item>
-                            <el-menu-item index="/categories/Python" @click="update">Python</el-menu-item>
-                            <el-menu-item index="/categories/Java" @click="update">Java</el-menu-item>
-                            <el-menu-item index="/categories/JavaScript" @click="update">JavaScript</el-menu-item>
-                            <el-menu-item index="/categories/C#" @click="update">C#</el-menu-item>
-                            <el-menu-item index="/categories/Ruby" @click="update">Ruby</el-menu-item>
+                            <el-menu-item index="/categories/C">C</el-menu-item>
+                            <el-menu-item index="/categories/C++">C++</el-menu-item>
+                            <el-menu-item index="/categories/Python">Python</el-menu-item>
+                            <el-menu-item index="/categories/Java">Java</el-menu-item>
+                            <el-menu-item index="/categories/JavaScript">JavaScript</el-menu-item>
+                            <el-menu-item index="/categories/C#">C#</el-menu-item>
+                            <el-menu-item index="/categories/Ruby">Ruby</el-menu-item>
                     </el-submenu>
                     <el-menu-item index="/tags">
                         <i class="el-icon-menu"></i>
@@ -37,7 +37,7 @@ export default {
     data() {
         return {
             windowWidth: window.innerWidth,
-            isCollapse:false
+            isCollapse: false
         }
     },
     mounted() {
@@ -48,11 +48,6 @@ export default {
     },
     created() {
         this.isCollapse = window.innerWidth < 710
-    },
-    methods: {
-        update() {
-            this.$forceUpdate()
-        }
     },
     computed: {
         isAuthenticated() {
@@ -75,6 +70,7 @@ i{
     height: inherit;
     background-color: #8D9EFF;
     min-height: 92vh;
+    position: relative;
 }
 .auth-sidebar{
     height: inherit;
@@ -92,7 +88,12 @@ i{
     }
     .auth-sidebar{
         margin-top:12.3%;
-        min-height: 83vh;
     }
+}
+@media only screen and (max-width:480px){
+    .auth-sidebar {
+            background-color: #8D9EFF;
+            margin-top: 29%;
+        }
 }
 </style>

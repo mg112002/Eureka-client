@@ -126,7 +126,7 @@ router.beforeEach((to, from, next) => {
                 Message({
                     type: 'error',
                     message: 'No match found',
-                    duration: 3000
+                    duration: 2000
                 })
             }
         })()

@@ -69,7 +69,8 @@ export default {
                 if (!this.tagValid) {
                     this.$message({
                         type: 'warning',
-                        message:'Tags cannot be empty'
+                        message: 'Tags cannot be empty',
+                        duration: 2000
                     })
                     return
                 }
@@ -85,20 +86,23 @@ export default {
                         await UpdateBlog(id, updatedDetails)
                         this.$message({
                             type: 'success',
-                            message: 'Blog updated successfully'
+                            message: 'Blog updated successfully',
+                            duration: 2000
                         })
                         this.$router.push({ name: 'blog-details', params: { id } })
                     }
                     catch (err) {
                         this.$message({
                             type: 'error',
-                            message: err.response.data.message
+                            message: err.response.data.message,
+                            duration: 2000
                         })
                     }
                 } else {
                     this.$message({
                         type: 'warning',
-                        message:'Please resolve the errors and try again!'
+                        message: 'Please resolve the errors and try again!',
+                        duration: 2000
                     })
                 }
             }

@@ -78,27 +78,27 @@ export default {
                     this.$message({
                         type: 'success',
                         message: 'Registration successful :)',
-                        duration: 4000
+                        duration: 3000
                     })
                     this.$router.push({name:'login'})
                 } else {
                     this.$message({
                         type: 'error',
                         message: 'Something went wrong :(',
-                        duration: 4000
+                        duration: 3000
                     })
                 }
             } else if(this.ruleForm.name===''||this.ruleForm.email===''||this.ruleForm.password===''||this.ruleForm.rpass==='') {
                 this.$message({
                     type: 'warning',
                     message: 'All fields are required!!',
-                    duration: 4000
+                    duration: 2000
                 })
             }else {
                 this.$message({
                     type: 'warning',
                     message: 'Please resolve the errors and try re-submitting!',
-                    duration:4000
+                    duration:2000
                 })
             }
         }        
