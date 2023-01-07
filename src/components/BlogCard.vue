@@ -3,20 +3,21 @@
     <VotingWidget :blog="blog" />
     <div class="blog-card">
         <div class="icons">
-            <el-button :disabled="!isAuthor" class="icon" type="primary" icon="el-icon-edit" circle></el-button>
+            <el-button :disabled="!isAuthor" @click="navigate(blog._id)" class="icon" type="primary" icon="el-icon-edit" circle></el-button>
             <el-button class="icon" type="info" icon="el-icon-share" @click="open" circle></el-button>
-            <el-button :disabled="!isAuthor" class="icon" type="danger" icon="el-icon-delete" circle></el-button>
+            <el-button :disabled="!isAuthor" @click="deleteBlog(blog._id)" class="icon" type="danger" icon="el-icon-delete" circle></el-button>
         </div>
         <div class="blog-info">
-            <h1>{{ blog.title }}</h1>
+            <h1>{{ blog.name }}</h1>
             <p v-if="blog.description">{{ blog.description.slice(0,310) }}
-        <router-link :to="{name:'blog-details',params:{id:blog._id}}">
+            <router-link :to="{name:'blog-details',params:{id:blog._id}}">
                 ...Read more</router-link></p>
-                <el-button size="small" class="tags category" round>{{ blog.category }}</el-button>
-                <el-button v-for="tag in blog.tags" :key="tag" size="small" class="tags" round>{{ tag }}</el-button>
+            <el-button size="small" class="tags category" round>{{ blog.category }}</el-button>
+            <el-button v-for="tag in blog.tags" :key="tag" size="small" class="tags" round>{{ tag }}</el-button>
         </div>
         <div class="blog-img">
-            <img :src="blog.imageUrl" :alt="blog.title" />
+            <img v-if="blog.imageUrl" :src="blog.imageUrl" :alt="blog.name" />
+            <img v-else src="@/../public/blog-img.jpg" :alt="blog.name" />
         </div>
     </div>
     </div>
@@ -26,12 +27,12 @@
 
 import VotingWidget from './VotingWidget.vue'
 import config from '@/config'
+import {DeleteBlog} from '@/services/userServices'
 
 export default {
     name: 'BlogCard',
     data() {
         return {
-            isAuthor: this.blog.postedBy === this.$store.state.email,
             url: `${config.productionUrl}/blogs/${this.blog._id }`
         }  
     },
@@ -42,6 +43,11 @@ export default {
     },
     components: {
         VotingWidget
+    },
+    computed: {
+        isAuthor() {
+            return this.blog.postedBy === this.$store.state.auth.email
+        }   
     },
     methods: {
         open() {
@@ -63,6 +69,41 @@ export default {
                     
                 }
             })
+        },
+        navigate(id) {
+            if (this.$store.state.auth.email===this.blog.postedBy) {
+                this.$router.push({name:'edit-blog',params:{id}})
+            } else {
+                this.$message({
+                    type: 'error',
+                    message:'Unauthorized access'
+                })
+            }
+        },
+        deleteBlog(id) {
+            if (this.$store.state.auth.email === this.blog.postedBy) {
+                this.$alert('Are you sure you want to delete this blog?', 'Delete', {
+                    confirmButtonText: 'Yes',
+                    callback: async(action) => {
+                        if (action === 'confirm') {
+                            try {
+                                this.$message({
+                                    type: 'success',
+                                    message: 'Blog deleted successfully'
+                                })
+                                await DeleteBlog(id)
+                                this.$router.go(0)                                
+                            } catch (err) {
+                                this.$message({
+                                    type: 'error',
+                                    message: err.response.data.message
+                                })
+                            }
+                        }
+
+                    }
+                })
+            }
         }
     }
 }
@@ -109,7 +150,6 @@ img{
     border-radius: 10px;
 }
 .tags{
-    /* margin: auto; */
     margin: 1%;
     pointer-events: none;
     color: #001253;

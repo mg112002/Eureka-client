@@ -1,5 +1,5 @@
 <template>
-    <el-aside width="20%" class="sidebar">
+    <el-aside width="20%" :class="isAuthenticated?'auth-sidebar':'sidebar'">
         <el-row class="tac">
             <el-col>
                 <el-menu class="el-menu-vertical-demo" :router=true
@@ -53,6 +53,11 @@ export default {
         update() {
             this.$forceUpdate()
         }
+    },
+    computed: {
+        isAuthenticated() {
+            return this.$store.getters.isAuthenticated
+        }
     }
 }
 </script>
@@ -67,23 +72,27 @@ i{
     padding-left:1%
 }
 .sidebar{
+    height: inherit;
     background-color: #8D9EFF;
+    min-height: 92vh;
+}
+.auth-sidebar{
+    height: inherit;
+    background-color: #8D9EFF;
+    min-height: 92vh;
+}
+.tac{
+    position: fixed;
+    width: 20%;
 }
 @media only screen and (max-width: 710px) {
     .sidebar {
-        margin: 0;
-        background-color: #8D9EFF;
-            height: 100%;
-    }
-}
-@media only screen and (max-width: 528px){
-    .sidebar{
         margin-top: 12.3%;
+        min-height:83.6vh;
     }
-}
-@media only screen and (max-width: 450px) {
-    .sidebar {
-            margin-top: 15%;
-        }
+    .auth-sidebar{
+        margin-top:12.3%;
+        min-height: 83vh;
+    }
 }
 </style>

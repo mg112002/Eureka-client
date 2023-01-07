@@ -1,12 +1,15 @@
 <template>
   <div v-if="blog!==undefined">
-    <button :disabled="upvoted" @click="vote('Upvoted')"><i class="el-icon-caret-top up-icon" :style="upvoted?'color:green':''"></i></button>
+    <button :disabled="isUpvoted" @click="vote('upvote')"><i class="el-icon-caret-top up-icon" :style="isUpvoted?'color:green':''"></i></button>
     <p>{{ votes }}</p>
-    <button :disabled="downvoted" @click="vote('Downvoted')"><i class="el-icon-caret-bottom down-icon" :style="downvoted?'color:red':''"></i></button>
+    <button :disabled="isDownvoted" @click="vote('downvote')"><i class="el-icon-caret-bottom down-icon" :style="isDownvoted?'color:red':''"></i></button>
   </div>
 </template>
 
 <script>
+
+import { VoteBlog } from '@/services/userServices'
+
 export default {
     name: 'VotingWidget',
     props: {
@@ -16,45 +19,77 @@ export default {
     },
     data() {
         return {
-            // votes: this.blog.upvotedBy.length - this.blog.downvotedBy.length,
-            upvoted: false,
-            // isUpvoted: this.blog.upvotedBy.includes(this.$store.state.auth.id),
-            // isDownvoted: this.blog.downvotedBy.includes(this.$store.state.email),
-            // isDownvoted: this.blog.downvotedBy.includes(this.$store.state.auth.id)
-            downvoted: false
+            updatedBlog:this.blog
         }
     },
     methods: {
-        vote(type) {
-            if (type === "Upvoted") {
-                this.upvoted = true
-                this.downvoted =false
-            } else {
-                this.downvoted = true
-                this.upvoted = false
+        async vote(action) {
+            if (!this.isAuthenticated) {
+                this.$message({
+                    type: 'info',
+                    message: 'Please login to vote a blog'
+                })
+                return
             }
-            this.$message({
-                type: 'success',
-                message: `${type} successfully`,
-                duration: 2000
-            })
+            try {
+                const res = await VoteBlog(this.blog._id, action, this.userId)
+                this.updatedBlog = res.data
+                this.$message({
+                    type: 'success',
+                    message: `${action}ed successfully`
+                })
+            } catch (err) {
+                this.$message({
+                    type: 'error',
+                    message: err.response.data.message
+                })
+            }
         }
     },
     computed: {
-        votes() {
-            let count=0,up=0,down=0
-            if (this.blog !== undefined) {
-                if (this.blog.upvotedBy !== undefined) {
-                    up= this.blog.upvotedBy.length
-                }
-                if (this.blog.downvotedBy !== undefined) {
-                    down = this.blog.downvotedBy.length
-                }
-                count = up-down
-            }
-            return count
+        userId() {
+            return this.$store.state.auth.id
         },
-        
+        votes() {
+            if (this.blog !== undefined) {
+                if (this.updatedBlog.upvotedBy !== undefined) {
+                    if (this.updatedBlog.upvotedBy.length) {
+                        return this.updatedBlog.upvotedBy.length
+                    } else {
+                        return -this.updatedBlog.downvotedBy.length
+                    }
+                } else {
+                    return 0
+                }
+            } else {
+                return 0
+            }
+        },
+        isUpvoted() {
+            if (this.blog !== undefined) {
+                if (this.updatedBlog.upvotedBy !== undefined) {
+                    return this.updatedBlog.upvotedBy.includes(this.userId)
+                } else {
+                    return false
+                }
+            } else {
+                return false
+            }
+        },
+        isDownvoted() {
+            if (this.blog !== undefined) {
+                if (this.blog.downvotedBy !== undefined) {
+                    return this.updatedBlog.downvotedBy.includes(this.userId)
+                } else {
+                    return false
+                }
+            } else {
+                return false
+            }
+        },
+        isAuthenticated() {
+            return this.$store.getters.isAuthenticated
+        }
     }
 }
 </script>

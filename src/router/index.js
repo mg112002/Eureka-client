@@ -8,6 +8,7 @@ import TagsPage from '@/components/TagsPage.vue'
 import PageNotFound from '@/components/PageNotFound.vue'
 import BlogDetail from '@/components/BlogDetail.vue'
 import EditBlog from '@/components/EditBlog.vue'
+import AddBlog from '@/components/AddBlog.vue'
 import store from '@/store'
 import { Message } from 'element-ui'
 import { getBlogsByCategory, getBlogsByTag, getBlogsBySearch, getBlogById } from '@/services/getBlogs'
@@ -44,7 +45,7 @@ const router = new Router({
         },
         {
             name: 'edit-blog',
-            path: '/edit/:id',
+            path: '/blogs/edit/:id',
             props: true,
             component: EditBlog
         },
@@ -74,7 +75,7 @@ const router = new Router({
         {
             name: 'add-blog',
             path: '/add',
-            // component: AddBlog
+            component: AddBlog
         },
         {
             name: 'not-found',

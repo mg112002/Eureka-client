@@ -36,7 +36,6 @@ export default {
 
 <style scoped>
 .row{
-    z-index: -1;
     padding-bottom: 2%;
     padding-left: 5%;
 }
@@ -57,17 +56,19 @@ export default {
     margin: 3% 0;
 }
 
-@media only screen and (max-width: 710px ) {
-    .column{
-        margin: 0 25% 25%;
-
-    }
-}
-
 @media only screen and (max-width:  990px) {
     .column {
-        margin: 0 25% 25%;
+        margin: 0 10% 25%;
+    }
+    .row {
+        padding: 15% 0 0;
+    }
+}
+@media only screen and (max-width: 710px) {
 
+    .row {
+        width: 90%;
+        padding-left: 0;
     }
 }
 </style>

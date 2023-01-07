@@ -44,8 +44,8 @@ const auth = {
         login({ commit }, credentials) {
 
             return login(credentials)
-                .then(data => {
-                    const { token, email, role, id } = data
+                .then(res => {
+                    const { token, email, role, id } = res.data
 
                     localStorage.setItem(KEY_TOKEN, token)
                     localStorage.setItem(KEY_EMAIL, email)

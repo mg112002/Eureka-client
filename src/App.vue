@@ -1,21 +1,9 @@
 <template>
-  <!-- <div>
-  <NavBar />
-  <div class="container">
-    <el-container>
-      <SideBar />
-      <el-container class="content">
-        <router-view/>
-      </el-container>
-    </el-container>
-  </div>
-  <AppFooter />
-  </div> -->
   <el-container>
     <el-header><NavBar/></el-header>
-    <el-container>
+    <el-container class="content">
       <SideBar />
-      <el-main><router-view /></el-main>
+      <el-main :class="isAuthenticated?'container-auth':'container'"><router-view /></el-main>
     </el-container>
   </el-container>
 </template>
@@ -30,6 +18,11 @@ export default {
   components: {
     NavBar,
     SideBar,
+  },
+  computed: {
+    isAuthenticated() {
+      return this.$store.getters.isAuthenticated
+    }
   }
 }
 </script>
@@ -42,19 +35,21 @@ html {
   padding:0
 }
 .container{
-  margin-bottom: 5%;
+  height: 100%;
+}
+.container-auth{
+  height: 100%;
 }
 .content{
-margin: 5% 3% 1% 23%;
-}
-@media only screen and (max-width:1200px){
-  .content{
-    margin-top: 8%;
-  }
+  position: relative;
+  overflow: auto;
 }
 @media only screen and (max-width: 710px) {
-  .content{
-    margin: 30% 2% 1% 20% 
+  .container {
+    margin-top: 15%;
+  }
+  .container-auth{
+    margin-top: 20%;
   }
 }
 </style>

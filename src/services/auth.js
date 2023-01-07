@@ -4,7 +4,7 @@ import { successHandler, errorHandler } from './handlers';
 
 export const login = (credentials) => {
     return axios.post(
-        `${config.apiBaseUrl}/login`,
+        `${config.apiBaseUrl}/auth/login`,
         credentials,
         {
             headers: {
