@@ -169,5 +169,8 @@ p{
     display: flex;
     flex-direction: column-reverse;
   }
+  .dotted{
+    margin: 10% auto;
+  }
 }
 </style>
