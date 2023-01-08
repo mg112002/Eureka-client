@@ -49,14 +49,27 @@ html {
 }
 @media only screen and (max-width: 710px) {
   .container {
-    margin-top: 11.2%;
+    margin-top: 0;
   }
   .container-auth{
     margin-top: 20%;
   }
-}@media only screen and (max-width:480px) {
+}
+@media only screen and (max-width:557px) {
+  .container {
+    margin-top: 11%;
+  }
+
+  .container-auth{
+    margin-top: 12.3%;
+  }
+}
+@media only screen and (max-width:480px) {
+  .container{
+    margin-top: 15%;
+  }
   .container-auth {
-    margin-top: 26%;
+    margin-top: 28%;
   }
 }
 </style>

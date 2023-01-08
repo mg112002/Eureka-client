@@ -83,14 +83,25 @@ i{
 }
 @media only screen and (max-width: 710px) {
     .sidebar {
-        margin-top: 11%;
-        min-height:83.6vh;
+        margin-top: 0;
     }
     .auth-sidebar{
-        margin-top:12.3%;
+        margin-top:8.9%;
     }
 }
+@media only screen and (max-width:557px) {
+    .sidebar{
+        margin-top: 11%;
+    }
+    .auth-sidebar{
+        margin-top: 12.3%;
+    }
+}
+
 @media only screen and (max-width:480px){
+    .sidebar{
+        margin-top: 15%;
+    }
     .auth-sidebar {
             background-color: #8D9EFF;
             margin-top: 29%;
