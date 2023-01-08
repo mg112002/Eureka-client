@@ -49,7 +49,7 @@ html {
 }
 @media only screen and (max-width: 710px) {
   .container {
-    margin-top: 15%;
+    margin-top: 11.2%;
   }
   .container-auth{
     margin-top: 20%;

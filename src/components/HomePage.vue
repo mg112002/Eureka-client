@@ -18,7 +18,7 @@
         <img src="https://techinscribed.com/wp-content/uploads/2020/01/why-blog.png" alt="why blog?">
       </div>
     </div>
-    <div class="info">
+    <div class="info tech">
       <div class="image">
         <img src="https://www.hostinger.com/tutorials/wp-content/uploads/sites/2/2021/12/blog-examples.jpg" alt="tech blogs">
       </div>
@@ -31,6 +31,7 @@
         ventured and unexplored areas. Writing gives an immediate insight into the nuggets inside our knowledge bank.</p>
       </div>
     </div>
+    <hr class="dotted" >
     <div class="feature">
       <div class="feature-img">
         <img src="https://www.sendinblue.com/wp-content/uploads/2020/02/how_to_create_a_newsletter.png" alt="newsletter">
@@ -138,6 +139,11 @@ p{
   background-color:#8D9EFF;
   border-left: 1px solid white;
 }
+.dotted{
+  width: 5%;
+  margin: 5% auto;
+  border-top: 5px dotted;
+}
 @media only screen and (max-width: 710px) {
   .image{
     display: block;
@@ -151,6 +157,17 @@ p{
   }
   .feature-content{
     margin: 2%;
+  }
+  #about{
+    flex-direction: column;
+  }
+  .icon{
+    font-size: 5rem;
+    margin-left: 40%;
+  }
+  .tech{
+    display: flex;
+    flex-direction: column-reverse;
   }
 }
 </style>

@@ -83,7 +83,7 @@ i{
 }
 @media only screen and (max-width: 710px) {
     .sidebar {
-        margin-top: 12.3%;
+        margin-top: 11%;
         min-height:83.6vh;
     }
     .auth-sidebar{

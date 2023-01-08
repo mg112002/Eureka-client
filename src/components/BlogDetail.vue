@@ -205,6 +205,7 @@ p{
   font-size: large;
 }
 .tags {
+  margin: 2%;
   pointer-events: none;
   color: orange;
 }
