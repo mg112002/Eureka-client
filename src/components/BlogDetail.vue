@@ -12,15 +12,17 @@
           <el-button :disabled="!isAuthor" @click="deleteBlog(blog._id)" class="icon" type="danger" icon="el-icon-delete"
             circle></el-button>
         </div>
-        <div :style="isAuthor ? 'margin-left:5%' : ''">
+        <div>
           <h1>{{ blog.name }}</h1>
-          <h2>Author: </h2><span>{{ blog.postedBy }}</span><br><br>
-          <h3>Posted on- </h3><span v-if="blog.time!==undefined">{{ blog.time.slice(0,10) }}</span>
+          <h3>Programming Language: </h3><span>{{ blog.category }}</span><br><br>
+          <h3>Author: </h3><span>{{ blog.postedBy }}</span><br><br>
+          <h3>Posted on- </h3><span v-if="blog.time!==undefined">{{ blog.time.slice(0,10) }}</span><br><br>
+          <el-button v-for="tag in blog.tags" :key="tag" size="small" class="tags" round>{{ tag }}</el-button>
           <p>{{ blog.description }}</p>
-          <el-button type="success" @click="vote('upvote')" icon="el-icon-caret-top" circle></el-button>
+          <el-button :disabled="isUpvoted" type="success" @click="vote('upvote')" icon="el-icon-caret-top" circle></el-button>
           <h3> Total Upvotes: </h3><span v-if="blog.upvotedBy!==undefined">{{ blog.upvotedBy.length }}</span> <br><br>
-          <el-button type="danger" @click="vote('downvote')" icon="el-icon-caret-bottom" circle></el-button>
-          <h3> Total Downvotes: </h3><span v-if="blog.dowvotedBy !== undefined">{{ blog.downvotedBy.length }}</span>
+          <el-button :disabled="isDownvoted" type="danger" @click="vote('downvote')" icon="el-icon-caret-bottom" circle></el-button>
+          <h3> Total Downvotes: </h3><span v-if="blog.downvotedBy!== undefined">{{ blog.downvotedBy.length }}</span>
         </div>
       </div>
     </div>
@@ -63,8 +65,8 @@ export default {
       },
       isUpvoted() {
         if (this.blog !== undefined) {
-          if (this.updatedBlog.upvotedBy !== undefined) {
-            return this.updatedBlog.upvotedBy.includes(this.userId)
+          if (this.blog.upvotedBy !== undefined) {
+            return this.blog.upvotedBy.includes(this.userId)
           } else {
             return false
           }
@@ -75,7 +77,7 @@ export default {
       isDownvoted() {
         if (this.blog !== undefined) {
           if (this.blog.downvotedBy !== undefined) {
-            return this.updatedBlog.downvotedBy.includes(this.userId)
+            return this.blog.downvotedBy.includes(this.userId)
           } else {
             return false
           }
@@ -160,12 +162,14 @@ export default {
         }
         try {
           const res = await VoteBlog(this.blog._id, action, this.userId)
-          this.updatedBlog = res.data
+          const updatedBlog = res.data
+          this.$store.commit('updateBlog',updatedBlog)
           this.$message({
             type: 'success',
             message: `${action}d successfully`,
             duration: 2000
           })
+          
         } catch (err) {
           this.$message({
             type: 'error',
@@ -181,6 +185,7 @@ export default {
 <style scoped>
 .container{
   display: flex;
+  margin: 3%;
 }
 .blog-detail{
   width: 100%;
@@ -199,5 +204,8 @@ p{
   line-height: 1.5;
   font-size: large;
 }
-
+.tags {
+  pointer-events: none;
+  color: orange;
+}
 </style>

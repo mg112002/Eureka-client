@@ -87,7 +87,7 @@ a {
 .box-card{
     width:40%;
     height: 100%;
-    margin: auto;
+    margin: 2% auto;
     padding-left: 3%;
 }
 .el-input {

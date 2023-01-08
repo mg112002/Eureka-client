@@ -105,7 +105,8 @@ export default {
                     await NewsLetterSignUp(info)
                     this.$message({
                         type: 'success',
-                        message: 'Signed up successfully'
+                        message: 'Signed up successfully',
+                        duration:1500
                     })
                     setTimeout(() => {
                         this.$message({
@@ -113,7 +114,7 @@ export default {
                             message: `You will now receive emails of new blog on ${info.email}`,
                             duration: 3000,
                         })
-                    }, 3000)
+                    }, 1500)
                     this.email = "",
                     this.interests=""
                     
@@ -145,7 +146,7 @@ a {
 
 .box-card {
     width: 40%;
-    margin: auto;
+    margin: 2% auto;
 }
 .el-input{
     width: 90%;

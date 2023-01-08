@@ -19,7 +19,7 @@
             <i class="el-icon-plus" ></i>
             New Blog
         </el-menu-item>
-        <el-menu-item index="/#about">AboutUs</el-menu-item>
+        <el-menu-item index="/#about" @click="goTo">AboutUs</el-menu-item>
         <el-menu-item v-if="isAuthenticated" index="/">Hello <span class="email">{{ email }}</span></el-menu-item>
         <el-menu-item v-if="isAuthenticated" index="/login" @click="logout">Logout</el-menu-item>
         <el-menu-item v-else index="/login">Login</el-menu-item>
@@ -69,6 +69,9 @@ export default {
 
                 })
             }
+        },
+        goTo() {
+            this.$router.push({name:'home',hash:'#about'})
         }
     },
     computed: {
@@ -83,6 +86,9 @@ export default {
 </script>
 
 <style scoped>
+a{
+    text-decoration: none;
+}
 .nav{
     z-index: 1;
     position: absolute;

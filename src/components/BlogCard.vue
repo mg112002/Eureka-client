@@ -171,7 +171,7 @@ img{
     margin: 25% 0 20%;
 }
 .category{
-    color:#8D9EFF ;
+    color:#8D9EFF;
 }
 
 @media only screen and (max-width: 710px) {

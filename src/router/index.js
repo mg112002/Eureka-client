@@ -82,7 +82,14 @@ const router = new Router({
             path: '*',
             component: PageNotFound
         },
-    ]
+    ],
+    scrollBehavior(to) {
+        if (to.hash) {
+            return {
+                selector: to.hash
+            }
+        }
+    }
 })
 
 router.beforeEach((to, from, next) => {

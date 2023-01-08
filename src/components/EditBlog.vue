@@ -74,7 +74,7 @@ export default {
                     })
                     return
                 }
-                if (this.descValid && this.nameValid && this.catValid && this.tagValid &&this.urlValid) {
+                if (this.descValid && this.nameValid && this.catValid && this.tagValid) {
                     const updatedDetails = {
                         name: this.blog.name,
                         description: this.blog.description,

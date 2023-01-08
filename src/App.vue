@@ -36,9 +36,11 @@ html {
   display: block;
 }
 .container{
+  padding: 0;
   height: 100%;
 }
 .container-auth{
+  padding: 0;
   height: 100%;
 }
 .content{
