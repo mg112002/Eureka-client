@@ -47,12 +47,17 @@ html {
   position: relative;
   overflow: auto;
 }
+@media only screen and (max-width: 1225px) {
+  .container-auth{
+    margin-top: 5%;
+  }
+}
 @media only screen and (max-width: 710px) {
   .container {
     margin-top: 0;
   }
   .container-auth{
-    margin-top: 20%;
+    margin-top: 8.9%;
   }
 }
 @media only screen and (max-width:557px) {
@@ -61,7 +66,7 @@ html {
   }
 
   .container-auth{
-    margin-top: 12.3%;
+    margin-top: 11%;
   }
 }
 @media only screen and (max-width:480px) {

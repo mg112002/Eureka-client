@@ -81,6 +81,16 @@ i{
     position: fixed;
     width: 20%;
 }
+@media only screen and (max-width: 1225px) {
+    .auth-sidebar {
+        margin-top: 5%;
+    }
+}
+@media only screen and (max-width: 1000px) {
+    .auth-sidebar {
+        margin-top: 6.29%;
+    }
+}
 @media only screen and (max-width: 710px) {
     .sidebar {
         margin-top: 0;
@@ -94,7 +104,7 @@ i{
         margin-top: 11%;
     }
     .auth-sidebar{
-        margin-top: 12.3%;
+        margin-top: 11%;
     }
 }
 
