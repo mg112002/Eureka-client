@@ -1,5 +1,5 @@
 <template>
-  <div v-if="blog!==undefined">
+  <div v-loading="loading" element-loading-text="Getting the blog details..." v-if="blog!==undefined">
     <div v-if="!blogValid">
       <h1>Blog Not Found</h1>
     </div>
@@ -39,10 +39,13 @@ export default {
     name: 'BlogDetail',
     data() {
       return {
-        url: `${config.productionUrl}${this.$route.fullPath}`
+        url: `${config.productionUrl}${this.$route.fullPath}`,
       }
     },
-    computed: {
+  computed: {
+    loading() {
+        return this.$store.getters.isLoading
+      },
         blog() {
         return this.$store.getters.blog
       },
@@ -128,7 +131,9 @@ export default {
                     message: 'Blog deleted successfully',
                     duration: 2000
                   })
+                  this.loading=true
                   await DeleteBlog(id)
+                  this.loading=false
                   this.$router.back()
                 } catch (err) {
                   this.$message({

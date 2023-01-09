@@ -2,7 +2,7 @@
   <el-container>
     <el-header><NavBar/></el-header>
     <el-container class="content">
-      <SideBar />
+      <!-- <SideBar /> -->
       <el-main :class="isAuthenticated?'container-auth':'container'"><router-view /></el-main>
     </el-container>
   </el-container>
@@ -11,13 +11,13 @@
 <script>
 
 import NavBar from './components/NavBar.vue'
-import SideBar from './components/SideBar.vue';
+// import SideBar from './components/SideBar.vue';
 
 export default {
   name: 'EurekaApp',
   components: {
     NavBar,
-    SideBar,
+    // SideBar,
   },
   computed: {
     isAuthenticated() {

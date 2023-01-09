@@ -1,4 +1,4 @@
 export default {
     apiBaseUrl: '/api',
-    productionUrl: 'https://eureka-kotk.onrender.com'
-}
+    productionUrl: 'https://eureka-kotk.onrender.com',
+}   

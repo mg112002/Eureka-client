@@ -104,25 +104,31 @@ router.beforeEach((to, from, next) => {
             cat = 'CS'
         }
         (async function getBlogs() {
+            store.commit('setLoading')
             const res = await getBlogsByCategory(cat)
             const blogs = res.data
             store.commit('updateBlogs', blogs)
+            store.commit('setLoading')
         })()
     }
     if (to.name === 'blogs-tag') {
         const tag = to.params.tag;
         (async function getBlogs() {
+            store.commit('setLoading')
             const res = await getBlogsByTag(tag)
             const blogs = res.data
             store.commit('updateBlogs', blogs)
+            store.commit('setLoading')
         })()
     }
     if (to.name === 'blogs') {
         const keyWord = to.query.keyWord;
         (async function getBlogs() {
+            store.commit('setLoading')
             const res = await getBlogsBySearch(keyWord)
             const blogs = res.data
             store.commit('updateBlogs', blogs)
+            store.commit('setLoading')
             if (blogs.length) {
                 Message({
                     type: 'success',
@@ -141,10 +147,12 @@ router.beforeEach((to, from, next) => {
     if (to.name === 'edit-blog' && store.getters.isAuthenticated) {
         const id = to.params.id;
         (async function getBlog() {
+            store.commit('setLoading')
             const res = await getBlogById(id)
             const blog = res.data
             if (blog.postedBy === store.state.auth.email) {
                 store.commit('updateBlog', blog)
+                store.commit('setLoading')
             } else {
                 return next({
                     name: 'login'
@@ -155,9 +163,11 @@ router.beforeEach((to, from, next) => {
     if (to.name === 'blog-details') {
         const id = to.params.id;
         (async function getBlog() {
+            store.commit('setLoading')
             const res = await getBlogById(id)
             const blog = res.data
             store.commit('updateBlog', blog)
+            store.commit('setLoading')
         })()
     }
     next()

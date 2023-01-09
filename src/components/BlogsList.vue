@@ -1,6 +1,6 @@
 <template>
     <div>
-    <div v-if="blogs.length!==0" class="blog-list">
+    <div v-loading="loading" v-if="blogs.length!==0" class="blog-list">
         <BlogCard v-for="(blog,idx) in blogs" :key="blog._id" :idx="idx" :blog="blog"/>
     </div>
     <div v-else class="no-blogs">
@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import BlogCard from './BlogCard.vue';
+import BlogCard from './BlogCard.vue'
 
 export default {
     name: 'BlogsList',
@@ -20,9 +20,12 @@ export default {
         }
     },
     computed: {
+        loading() {
+            return this.$store.getters.isLoading
+        },
         blogs() {
             return this.$store.getters.blogs
-        } 
+        }
     },
     components: {
         BlogCard

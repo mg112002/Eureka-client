@@ -44,13 +44,14 @@ export default {
     width: 15rem;
     text-align: center;
     cursor: pointer;
+    margin: auto;
 }
 .bg-color{
     width: 100%;
     height: 100%;
     border-radius: 5px;
     margin: auto;
-    background-color: lightblue;
+    background-color: #ccd4ff;
 }
 .column{
     margin: 3% 0;

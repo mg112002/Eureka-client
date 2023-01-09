@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-carousel class="crsl" :interval="4000" height="23rem" indicator-position="inside">
+    <el-carousel class="crsl" :interval="4000" height="30em" indicator-position="inside">
       <el-carousel-item><img src="@/../public/img2.jpg" alt="blog"/></el-carousel-item>
       <el-carousel-item><img src="@/../public/img3.jpg" alt="blog" /></el-carousel-item>
       <el-carousel-item><img src="@/../public/img4.jpg" alt="blog" /></el-carousel-item>
@@ -15,12 +15,12 @@
           creating content that people can share on social networks — Twitter, LinkedIn, Facebook, etc.</p>
       </div>
       <div class="image">
-        <img src="https://techinscribed.com/wp-content/uploads/2020/01/why-blog.png" alt="why blog?">
+        <img src="@/../public/why.jpg" alt="why blog?">
       </div>
     </div>
     <div class="info tech">
       <div class="image">
-        <img src="https://www.hostinger.com/tutorials/wp-content/uploads/sites/2/2021/12/blog-examples.jpg" alt="tech blogs">
+        <img src="@/../public/tech.jpg" alt="tech blogs">
       </div>
       <div class="qna">
         <h2>Tech Blogs</h2>
@@ -34,7 +34,7 @@
     <hr class="dotted" >
     <div class="feature">
       <div class="feature-img">
-        <img src="https://www.sendinblue.com/wp-content/uploads/2020/02/how_to_create_a_newsletter.png" alt="newsletter">
+        <img src="@/../public/Newsletter.jpg" alt="newsletter">
       </div>
       <div class="feature-content">
         <h2>Newsletter Sign Up</h2>
@@ -47,20 +47,19 @@
     <div id="about">
       <div class="icon-container">
         <i class="el-icon-mobile icon"></i>
-        <p>+00 0000000000</p>
+        <p>+91 9594590500</p>
       </div>
       <div class="icon-container">
         <i class="el-icon-message icon"></i>
-        <p>jane.doe@example.com</p>
-        <p>john.doe@example.com</p>
+        <p>mg900500@gmail.com</p>
       </div>
       <div class="icon-container">
         <i class="el-icon-position icon"></i>
-        <p>Mumbai, Maharashtra, India</p>
+        <p>Navi Mumbai, Maharashtra, India</p>
       </div>
     </div>
     <div class="footer">
-      &copy;MG - 2023
+      <p>&copy; Mangalam Gupta - 2023</p>
     </div>
   </div>
 </template>
@@ -81,29 +80,37 @@ img{
   height: 100%;
 }
 h2{
+  font-size:45px;
   text-align: center;
+}
+.el-icon-mobile{
+  font-weight: 100;
 }
 .icon{
   font-size: 15rem;
+  /* font-weight: 100; */
 }
 .info{
-  margin: 3% 2%
+  display: flex;
+  margin: 3% 10%
 }
 .qna{
   width:60%;
   height: 100%;
-  display:inline-block
 }
 p{
   text-align: justify;
   line-height: 1.5;
+  width: 95%;
+  font-weight: bold;
 }
 .image{
-  display: inline-block;
+  display: flex;
   width: 38%;
   height: 100%;
-  margin: 1%;
+  margin: auto;
 }
+
 .feature-img{
   width: 60%;
   margin: auto;
@@ -134,17 +141,23 @@ p{
   z-index: 0;
 }
 .footer{
-  padding: 2%;
-  text-align: center;
-  background-color:#8D9EFF;
+  padding: 1%;
+  background-color:#4d67ff;
   border-left: 1px solid white;
+}
+.footer p{
+  color: white;
+  text-align: center;
 }
 .dotted{
   width: 5%;
   margin: 5% auto;
   border-top: 5px dotted;
 }
-@media only screen and (max-width: 710px) {
+@media only screen and (max-width: 775px) {
+  .info{
+    display: block;
+  }
   .image{
     display: block;
     margin: auto;
@@ -158,13 +171,7 @@ p{
   .feature-content{
     margin: 2%;
   }
-  #about{
-    flex-direction: column;
-  }
-  .icon{
-    font-size: 5rem;
-    margin-left: 40%;
-  }
+  
   .tech{
     display: flex;
     flex-direction: column-reverse;
@@ -172,5 +179,16 @@ p{
   .dotted{
     margin: 10% auto;
   }
+}
+
+@media screen and (max-width:960px) {
+  #about {
+      flex-direction: column;
+    }
+ 
+    .icon {
+      display:flex;
+      justify-content: center;
+    }
 }
 </style>

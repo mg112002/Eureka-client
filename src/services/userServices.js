@@ -33,6 +33,6 @@ export const UpdateBlog = async (id, details) => {
 }
 
 export const AddBlog = async (blogInfo) => {
-    const { data } = await axios.post(`${config.apiBaseUrl}/blogs`, blogInfo, { headers })
+    const { data } = await axios.post(`${config.apiBaseUrl}/blogs`, blogInfo, headers)
     return data
 }

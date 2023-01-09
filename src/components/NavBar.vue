@@ -1,8 +1,12 @@
 <template>
+    <div>
+    <el-drawer :title="isAuthenticated?`Hola ${user}!`:'Hello Blogger'" :modal-append-to-body=true direction="rtl" :size="size" :visible.sync="drawer">
+        <SideBar @setDrawer="drawer=false"/>
+    </el-drawer>
 <div class="nav">
 <el-menu class="el-menu-demo" mode="horizontal" :router=true
-    background-color="#8D9EFF" text-color="#001253" active-text-color="#0027b3" style="position:fixed;width:100%">
-    <el-menu-item index="/"  style="border-bottom-color: transparent"><img src="../../public/logo.png"/></el-menu-item>
+    background-color="#4d67ff" text-color="white" active-text-color="#001799" style="position:fixed;width:100%">
+    <el-menu-item index="/" style="border-bottom-color: transparent"><img src="../../public/logo.png"/></el-menu-item>
         <el-menu-item style="border-bottom-color: transparent;width:40%">
             <div @keydown.stop>
                 <el-input
@@ -10,7 +14,7 @@
                 v-model="search"
                 style="width:92%"
                 clearable />
-                <el-button style="background-color:#8D9EFF; border-color: #8D9EFF;padding:1%;margin-left: 2%;" @click="setBlogs">
+                <el-button style="background-color:#4d67ff; border-color: #4d67ff;padding:1%;margin-left: 2%;" @click="setBlogs">
                     <i class="el-icon-search"></i>
                 </el-button>
             </div>
@@ -23,20 +27,26 @@
         <el-menu-item v-if="isAuthenticated" index="/">Hello <span class="email">{{ email }}</span></el-menu-item>
         <el-menu-item v-if="isAuthenticated" index="/login" @click="logout">Logout</el-menu-item>
         <el-menu-item v-else index="/login">Login</el-menu-item>
+        <el-menu-item @click="drawer=!drawer" style="float:right"><el-button style="background-color:transparent;border:none;"><i style="color:white;font-size:xx-large" class="el-icon-s-grid"></i></el-button></el-menu-item>
 </el-menu>
-
-</div>
+</div></div>
 </template>
 
 <script>
+import SideBar from './SideBar.vue';
 export default {
+  components: { SideBar },
     name:'NavBar',
     data() {
         return {
             search: '',
+            drawer: false
         };
     },
     methods: {
+        setDrawer() {
+         this.drawer = !this.drawer   
+        },
         setBlogs() {
             if (this.search !== '') {
                 this.$message({
@@ -80,6 +90,18 @@ export default {
         },
         email() {
             return this.$store.state.auth.email
+        },
+        user() {
+            return this.store.state.auth.name
+        },
+        size() {
+            if (window.innerWidth < 500) {
+                return '100%'
+            } else if (window.innerWidth < 1080) {
+                return '50%'
+            } else {
+                return '20%'
+            }
         }
     }
 }
@@ -100,14 +122,11 @@ img{
     height: 88%;
     width:100%
 }
-el-button{
-background-color:#8D9EFF;
-}
 i {
     color: #001253;
 }
 .el-icon-search{
-    color:#001253
+    color: white
 }
 .el-icon-search:hover{
     color: #0027b3;

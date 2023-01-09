@@ -6,7 +6,8 @@ const BLOG = 'blog'
 const store = new Vuex.Store({
     state: {
         blogs: localStorage.getItem(BLOGS) || [],
-        blog: localStorage.getItem(BLOG) || {}
+        blog: localStorage.getItem(BLOG) || {},
+        isLoading: false,
     },
     modules: {
         auth: auth
@@ -19,11 +20,15 @@ const store = new Vuex.Store({
         updateBlog(state, blog) {
             localStorage.setItem(BLOG, blog)
             state.blog = blog
-        }
+        },
+        setLoading(state) {
+            state.isLoading = !state.isLoading
+        },
     },
     getters: {
         blogs: state => { return state.blogs },
-        blog: state => { return state.blog }
+        blog: state => { return state.blog },
+        isLoading: state => { return state.isLoading },
     }
 })
 

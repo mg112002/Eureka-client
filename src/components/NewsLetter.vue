@@ -15,7 +15,7 @@
         <p v-if="iValidated&&!iValid" class="errmsg">Interests cannot be empty</p>
         <p>Note: You will receive mail on the above email whenever a blog with tag of your interest is posted!! </p>
         <p>If you want to update the interests just enter the email already signedUp and select all the interests you want.</p>
-        <el-button type="primary" class="signup" @click="signUp">Sign Up</el-button>
+        <el-button type="primary" class="signup" @click="signUp">Subscribe</el-button>
     </el-card>
 </template>
 
