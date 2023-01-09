@@ -92,7 +92,7 @@ export default {
             return this.$store.state.auth.email
         },
         user() {
-            return this.store.state.auth.name
+            return this.$store.state.auth.name
         },
         size() {
             if (window.innerWidth < 500) {
