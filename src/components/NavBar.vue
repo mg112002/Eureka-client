@@ -1,6 +1,6 @@
 <template>
     <div>
-    <el-drawer :title="isAuthenticated?`Hola ${user}!`:'Hello Blogger'" :modal-append-to-body=true direction="rtl" :size="size" :visible.sync="drawer">
+    <el-drawer title="Hola Blogger!" :modal-append-to-body=true direction="rtl" :size="size" :visible.sync="drawer">
         <SideBar @setDrawer="drawer=false"/>
     </el-drawer>
 <div class="nav">
@@ -14,7 +14,7 @@
                 v-model="search"
                 style="width:92%"
                 clearable />
-                <el-button style="background-color:#4d67ff; border-color: #4d67ff;padding:1%;margin-left: 2%;" @click="setBlogs">
+                <el-button style="background-color:#4d67ff; border:none;padding:1%;margin-left: 2%;" @click="setBlogs">
                     <i class="el-icon-search"></i>
                 </el-button>
             </div>
@@ -90,9 +90,6 @@ export default {
         },
         email() {
             return this.$store.state.auth.email
-        },
-        user() {
-            return this.$store.state.auth.name
         },
         size() {
             if (window.innerWidth < 500) {
