@@ -1,7 +1,7 @@
 <template>
     <div>
     <div v-loading="loading" element-loading-text="Fetching the blogs that you need..." v-if="blogs.length!==0" class="blog-list">
-        <BlogCard v-for="(blog,idx) in blogs" :key="blog._id" :idx="idx" :blog="blog"/>
+        <BlogCard  v-for="(blog,idx) in blogs" :key="blog._id" :idx="idx" :blog="blog"/>
     </div>
     <div v-else class="no-blogs">
         <h2 style="marign:500px">No blogs found!!</h2>

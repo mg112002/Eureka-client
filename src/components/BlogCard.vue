@@ -1,5 +1,5 @@
 <template>
-    <div v-if="Object.keys(blog).length" class="container">
+    <div v-loading="loading" element-loading-text="Fetching the blogs that you need..." v-if="Object.keys(blog).length" class="container">
     <VotingWidget :blog="blog" />
     <div class="blog-card">
         <div class="icons">
