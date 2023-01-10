@@ -240,4 +240,9 @@ img{
   transform: scale(1.1);
   transition-duration: 2s;
 }
+@media screen and (max-width:840px) {
+  .main{
+    flex-direction: column;
+  }
+}
 </style>

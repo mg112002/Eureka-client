@@ -60,7 +60,7 @@ html {
     margin-top: 8.9%;
   }
 }
-@media only screen and (max-width:565px) {
+@media only screen and (max-width:564px) {
   .container {
     margin-top: 11%;
   }
