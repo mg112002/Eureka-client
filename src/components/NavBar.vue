@@ -24,10 +24,10 @@
             New Blog
         </el-menu-item>
         <el-menu-item index="/#about" @click="goTo">AboutUs</el-menu-item>
-        <el-menu-item v-if="isAuthenticated" index="/">Hello <span class="email">{{ email }}</span></el-menu-item>
+        <el-menu-item v-if="isAuthenticated" index="/" ><span class="email"> Hello {{ email }}!</span></el-menu-item>
         <el-menu-item v-if="isAuthenticated" index="/login" @click="logout">Logout</el-menu-item>
         <el-menu-item v-else index="/login">Login</el-menu-item>
-        <el-menu-item @click="drawer=!drawer" style="float:right"><el-button style="background-color:transparent;border:none;"><i style="color:white;font-size:xx-large" class="el-icon-s-grid"></i></el-button></el-menu-item>
+        <el-menu-item @click="drawer=!drawer" style="position:absolute;right: 0;padding-right: 10px;"><el-button style="background-color:transparent;border:none;padding:0"><i style="color:white;font-size:xx-large" class="el-icon-s-grid"></i></el-button></el-menu-item>
 </el-menu>
 </div></div>
 </template>
@@ -124,6 +124,9 @@ i {
 }
 .el-icon-search{
     color: white
+}
+.el-icon-plus{
+    color: white;
 }
 .el-icon-search:hover{
     color: #0027b3;

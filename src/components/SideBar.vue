@@ -9,19 +9,19 @@
                             <i class="el-icon-s-unfold"></i>
                             <span>Categories</span>
                         </template>
-                            <el-menu-item index="/categories/C">C</el-menu-item>
-                            <el-menu-item index="/categories/C++">C++</el-menu-item>
-                            <el-menu-item index="/categories/Python">Python</el-menu-item>
-                            <el-menu-item index="/categories/Java">Java</el-menu-item>
-                            <el-menu-item index="/categories/JavaScript">JavaScript</el-menu-item>
-                            <el-menu-item index="/categories/C#">C#</el-menu-item>
-                            <el-menu-item index="/categories/Ruby">Ruby</el-menu-item>
+                            <el-menu-item index="/categories/C" @click="closeDrawer">C</el-menu-item>
+                            <el-menu-item index="/categories/C++" @click="closeDrawer">C++</el-menu-item>
+                            <el-menu-item index="/categories/Python" @click="closeDrawer">Python</el-menu-item>
+                            <el-menu-item index="/categories/Java" @click="closeDrawer">Java</el-menu-item>
+                            <el-menu-item index="/categories/JavaScript" @click="closeDrawer">JavaScript</el-menu-item>
+                            <el-menu-item index="/categories/C#" @click="closeDrawer">C#</el-menu-item>
+                            <el-menu-item index="/categories/Ruby" @click="closeDrawer">Ruby</el-menu-item>
                     </el-submenu>
                     <el-menu-item index="/tags" @click="closeDrawer">
                         <i class="el-icon-menu"></i>
                         <span>Tags</span>
                     </el-menu-item>
-                    <el-menu-item index="/newsletter">
+                    <el-menu-item index="/newsletter" @click="closeDrawer">
                         <i class="el-icon-document"></i>
                         <span>NewsLetter</span>
                     </el-menu-item>

@@ -5,6 +5,8 @@
     </div>
     <div v-else class="container">
       <div class="blog-detail">
+        <div class="main">
+        <div class="content">
         <div class="icons">
           <el-button :disabled="!isAuthor" @click="navigate(blog._id)" class="icon" type="primary" icon="el-icon-edit"
             circle></el-button>
@@ -18,12 +20,18 @@
           <h3>Author: </h3><span>{{ blog.postedBy }}</span><br><br>
           <h3>Posted on- </h3><span v-if="blog.time!==undefined">{{ blog.time.slice(0,10) }}</span><br><br>
           <el-button v-for="tag in blog.tags" :key="tag" size="small" class="tags" round>{{ tag }}</el-button>
+          </div>
+          </div>
+          <div class="image">
+            <img v-if="blog.imageUrl" :src="blog.imageUrl" :alt="blog.name" />
+            <img v-else src="@/../public/blog-img.jpg" :alt="blog.name" />
+          </div>
+          </div>
           <p>{{ blog.description }}</p>
           <el-button :disabled="isUpvoted" type="success" @click="vote('upvote')" icon="el-icon-caret-top" circle></el-button>
           <h3> Total Upvotes: </h3><span v-if="blog.upvotedBy!==undefined">{{ blog.upvotedBy.length }}</span> <br><br>
           <el-button :disabled="isDownvoted" type="danger" @click="vote('downvote')" icon="el-icon-caret-bottom" circle></el-button>
           <h3> Total Downvotes: </h3><span v-if="blog.downvotedBy!== undefined">{{ blog.downvotedBy.length }}</span>
-        </div>
       </div>
     </div>
   </div>
@@ -188,6 +196,10 @@ export default {
 </script>
 
 <style scoped>
+.main{
+  display: flex;
+  justify-content: space-between;
+}
 .container{
   display: flex;
   margin: 3%;
@@ -210,8 +222,22 @@ p{
   font-size: large;
 }
 .tags {
-  margin: 2%;
+  margin: 1% 1% 1% 0 ;
   pointer-events: none;
   color: orange;
+}
+
+img{
+  width: 100%;
+  height: 100%;
+}
+.image{
+  width: 50%;
+  height: 25rem;
+  margin: auto 0;
+}
+.image:hover{
+  transform: scale(1.1);
+  transition-duration: 2s;
 }
 </style>
