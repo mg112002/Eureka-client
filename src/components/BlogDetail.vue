@@ -244,5 +244,9 @@ img{
   .main{
     flex-direction: column;
   }
+  .image{
+    width: 100%;
+    margin: auto;
+  }
 }
 </style>
