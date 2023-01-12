@@ -23,7 +23,7 @@
             <i class="el-icon-plus" ></i>
             New Blog
         </el-menu-item>
-        <el-menu-item index="/#about" @click="goTo">AboutUs</el-menu-item>
+        <el-menu-item @click="goTo">AboutUs</el-menu-item>
         <el-menu-item v-if="isAuthenticated" index="/" ><span class="email"> Hello {{ email }}!</span></el-menu-item>
         <el-menu-item v-if="isAuthenticated" index="/login" @click="logout">Logout</el-menu-item>
         <el-menu-item v-else index="/login" style="margin-right:8%">Login</el-menu-item>
